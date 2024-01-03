@@ -4,7 +4,8 @@
   "description": "Playwright project",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
+    "test": "playwright test",
+    "test:debug": "playwright test --headed",
     "report": "playwright show-report"
   },
   "author": "Rustam Kutovyi",
