@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test'
+import {login} from "../common/log-in";
 test.describe('Common', () => {
+    test.beforeEach(async ({ page }) => {
+        await login(page, 'test1@example.com', 'Qwerty1234')
+    })
   test('Navigation', async ({page}) => {
-      await page.goto('https://coding.pasv.us/user/login')
-
-      await page.locator('#normal_login_email').fill('test1@example.com')
-      await page.locator('#normal_login_password').fill('Qwerty1234')
-      await page.locator('button[type="submit"]').click()
 
       await page.getByTestId('topmenu-Курсы').click()
       await expect(page).toHaveURL('https://coding.pasv.us/course')
