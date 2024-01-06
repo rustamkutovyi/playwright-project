@@ -1,9 +1,9 @@
-import {test, expect} from '@playwright/test'
-import {login} from '../common/log-in'
+import {test, expect} from '../common/test'
 
 test.describe('Common', () => {
-  test.beforeEach(async ({page}) => {
-    await login(page, process.env.EMAIL, process.env.PASSWORD)
+  test.beforeEach(async ({loginPage}) => {
+    await loginPage.open()
+    await loginPage.logIn(process.env.EMAIL, process.env.PASSWORD)
   })
   test('Navigation', async ({page}) => {
     await page.getByTestId('topmenu-Курсы').click()
